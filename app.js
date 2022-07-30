@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(morgan("dev"));
 
-const PORT = 8080 || process.env.PORT;
+const PORT = process.env.PORT || 8080;
 const dotenv = require("dotenv").config();
 const mongoose = require("mongoose");
 
