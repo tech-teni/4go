@@ -38,7 +38,7 @@ mongoose.connection.on("error", (err) => {
 app.use("/post", postRoutes);
 app.use("/auth", authRoutes);
 // app.use("/profile", profileRoutes);
-app.use("/", userRoutes);
+app.use("/user", userRoutes);
 app.use("/folow", followRoutes);
 
 // app.use("/auth", authRoutes);
