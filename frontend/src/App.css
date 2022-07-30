@@ -1,0 +1,506 @@
+@media screen and (max-width: 500px) {
+  body {
+    margin: 0;
+    font-family: sans-serif;
+  }
+  /* home page */
+  .home {
+    background-color: #73a9fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    font-size: 30px;
+    margin: 0;
+  }
+  .home h1 {
+    margin-top: 10px;
+  }
+
+  /* login  */
+  .login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
+  .login a {
+    color: #fb7901;
+  }
+  .login h1 {
+    color: #6ea1ee;
+    font-size: 50px;
+    margin-bottom: 50px;
+  }
+  .login form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .login .account {
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .login .account h5 {
+    color: #fb7901;
+    text-decoration: underline;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+  .login p {
+    font-size: 10px;
+    font-weight: bold;
+  }
+  .login input[type="text"],
+  .login input[type="email"],
+  .login input[type="password"] {
+    height: 50px;
+    width: 250px;
+    background-color: #dbdada;
+    border: 2px solid #d3d2d2;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    border-radius: 10px;
+  }
+  ::-webkit-input-placeholder {
+    color: rgb(168, 166, 166);
+  }
+  .login input[type="submit"] {
+    background-color: #4c88e1;
+    width: 270px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: -15px;
+  }
+  /* register */
+  .register h1 {
+    margin-top: 5px;
+  }
+  .register input[type="text"],
+  .register input[type="email"] {
+    height: 40px;
+    border-radius: 7px;
+  }
+  .register .genderP {
+    width: 270px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: -5px;
+  }
+  .register .genderP {
+    font-size: 15px;
+    color: grey;
+  }
+  .register label[for="male"],
+  .register label[for="female"] {
+    color: grey;
+    font-size: 12px;
+  }
+  .register .regRadio {
+    display: flex;
+    justify-content: flex-start;
+    width: 270px;
+    margin-top: -10px;
+  }
+  .register .rad {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 5px;
+  }
+  .register .birthday {
+    margin-bottom: 10px;
+    color: grey;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 270px;
+  }
+  .register input[type="date"] {
+    margin-bottom: 10px;
+    color: #8f8f8f;
+    border: 2px solid #d3d2d2;
+    padding: 5px;
+    border-radius: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    /*  */
+  }
+  .register a {
+    color: #fb7901;
+  }
+  input[type="date"]::-webkit-datetime-edit,
+  input[type="date"]::-webkit-inner-spin-button,
+  input[type="date"]::-webkit-clear-button {
+    color: rgb(255, 255, 255);
+    position: relative;
+  }
+
+  input[type="date"]::-webkit-datetime-edit-year-field {
+    position: absolute !important;
+    /* border-left: 1px solid #8c8c8c; */
+    padding: 2px;
+    color: grey;
+    left: 52px;
+  }
+
+  input[type="date"]::-webkit-datetime-edit-month-field {
+    position: absolute !important;
+    /* border-left: 1px solid #ffffff; */
+    padding: 2px;
+    color: grey;
+    left: 30px;
+  }
+
+  input[type="date"]::-webkit-datetime-edit-day-field {
+    position: absolute !important;
+    color: grey;
+    padding: 2px;
+    left: 4px;
+  }
+
+  /* main home */
+  .main-home {
+    position: relative;
+  }
+  .main-home header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(218, 218, 218);
+    padding: 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+  }
+  /* .main-home footer {
+      position: fixed;
+      bottom: 0;
+    } */
+
+  .main-home h1 {
+    color: #4c88e1;
+    margin-right: 20px;
+    font-size: 1.7em;
+  }
+  img[src="./img/profilePic.png"] {
+    width: 3rem;
+    height: 3rem;
+    margin-left: 12px;
+  }
+  img[src="img/mesage.png"] {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 25px;
+  }
+  .main-home section {
+    margin-top: 100px;
+  }
+
+  /* post info */
+  .post-info {
+    border-bottom: 1px solid rgb(218, 218, 218);
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .post-info h1 {
+    color: black;
+    font-size: 14px;
+  }
+  .post-info img {
+    margin-top: 10px;
+  }
+  .post-info .likes-comment {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+  }
+  .likes-comment span {
+    display: flex;
+    align-items: center;
+  }
+  .likes-comment span p {
+    color: grey;
+    margin-left: 5px;
+  }
+  .time-more {
+    width: 10%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    color: rgb(88, 87, 87);
+  }
+  .time-more i {
+    font-size: 10px;
+    margin-top: 3px;
+    font-style: normal;
+  }
+  .post-info p {
+    color: black;
+    font-size: 13px;
+  }
+  .post-words {
+    width: 60%;
+  }
+  .harsh-tag {
+    color: #4c88e1;
+  }
+  /* footer */
+  footer {
+    background-color: #ffffff;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: fixed;
+    bottom: 0;
+    border-top: 2px solid rgb(218, 218, 218);
+  }
+
+  footer i {
+    width: 40px;
+    height: 140px;
+    color: black;
+  }
+
+  footer a {
+    color: black;
+    font-size: 25px;
+  }
+  /* profile page */
+  .upper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .upper h1 {
+    margin-left: 20px;
+    color: #4c88e1;
+    font-size: 1.7em;
+  }
+  .upper h5 {
+    margin-right: 20px;
+  }
+  .profile-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile-words {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: start;
+  }
+  .profile-words p {
+    margin-top: -15px;
+    font-size: 12px;
+  }
+  .follow-follow {
+    margin: auto;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .bigg {
+    font-size: 14px;
+  }
+  .small {
+    font-size: 10px;
+    margin-top: -12px;
+  }
+  .post-number {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  .post-number i {
+    color: #fb7901;
+    font-size: 10px;
+  }
+  .post-number button {
+    width: 180px;
+    height: 35px;
+    font-size: 15px;
+    background-color: white;
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 5px;
+  }
+  .edit-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .edit-button button {
+    width: 180px;
+    height: 35px;
+    font-size: 15px;
+    background-color: white;
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 5px;
+  }
+  .posting-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 40px;
+  }
+  .notify-flex {
+    display: flex;
+    margin-top: 20px;
+    /* justify-content: space-evenly; */
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 7px;
+    border-bottom: 1px solid rgb(209, 209, 209);
+  }
+
+  .notify-flex input[type="search"] {
+    width: 240px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid rgb(212, 212, 212);
+  }
+  .notify-flex img {
+    margin-right: 15px;
+  }
+  .posting-flex textarea {
+    padding: 10px;
+    border: none;
+  }
+  .cancel-button {
+    background-color: #4c88e1;
+    height: 30px;
+    width: 85px;
+    border: none;
+    margin-left: 10px;
+    color: white;
+    font-size: 15px;
+  }
+  .post-button {
+    background-color: #fb7901;
+    height: 30px;
+    width: 85px;
+    border: none;
+    margin-right: 10px;
+    color: white;
+    font-size: 15px;
+  }
+  .upper-button {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .search-entity {
+    border-bottom: 1px solid rgb(230, 230, 230);
+    padding: 10px 0px;
+  }
+  .search-entity .add-viewButton {
+    display: flex;
+    align-items: center;
+  }
+  .search-entity p {
+    margin-top: -5px;
+  }
+  .add-viewButton button {
+    width: 90px;
+    height: 25px;
+    color: white;
+    background-color: #4c88e1;
+    border: none;
+  }
+  .search-entity .coloured {
+    background-color: #fb7901;
+    margin-left: 20px;
+  }
+  .space {
+    width: 100%;
+    height: 200px;
+  }
+  .notify-stage {
+    display: flex;
+  }
+  .searchfor {
+    margin-top: -30px;
+    margin-left: 10px;
+    color: #cccccc;
+    font-size: 20px;
+  }
+  .notify-heading h2 {
+    margin-left: 10px;
+  }
+  .notify-heading .hamburger {
+    margin-right: 10px;
+  }
+  .notify-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(219, 219, 219);
+  }
+  .notify-stage {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-bottom: 1px solid rgb(211, 209, 209);
+    padding: 10px 0px;
+  }
+  .nott {
+    margin-left: 5px;
+  }
+  .nott p {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .nott p span {
+    font-size: 12px;
+  }
+  .nott b {
+    font-size: 13px;
+  }
+  .time-time {
+    font-size: 10px;
+    margin-top: 5px;
+    color: #8f8f8f;
+  }
+  .time-butt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .time-butt button {
+    background-color: #4c88e1;
+    border: none;
+    color: white;
+    width: 60px;
+    height: 25px;
+    border-radius: 4px;
+  }
+  .orange {
+    background-color: #fb7901;
+    height: 30px;
+    width: 85px;
+    border: none;
+    margin-right: 10px;
+    color: white;
+    font-size: 15px;
+  }
+}
