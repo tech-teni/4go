@@ -5,7 +5,7 @@ const { authenticateToken } = require("../controllers/AuthControllers");
 const { UserById } = require("../controllers/userController");
 const authModel = require("../models/authModel");
 const mongoose = require("mongoose").set("debug", true);
-const { stringify } = require("nodemon/lib/utils");
+
 const { parse } = require("dotenv");
 const { ObjectId } = mongoose.mongo;
 // router.post("/", createPostController);
