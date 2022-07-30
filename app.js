@@ -24,6 +24,7 @@ app.use(morgan("dev"));
 const PORT = process.env.PORT || 8080;
 const dotenv = require("dotenv").config();
 const mongoose = require("mongoose");
+console.log("niode_env: ", process.env.NODE_ENV);
 
 mongoose.connect(process.env.MONGO_URI);
 mongoose.connection.on("connected", () => {
@@ -42,18 +43,18 @@ app.use("/folow", followRoutes);
 
 // app.use("/auth", authRoutes);
 // API DOCS
-app.get("/", (req, res) => {
-  // fs.readFile("docs/apiDocs.json", (err, data) => {
-  //   if (err) {
-  //     res.status(400).json({
-  //       error: err,
-  //     });
-  //     const docs = JSON.parse(data);
-  //     res.json(docs);
-  //   }
-  // });
-  res.send(docs);
-});
+// app.get("/", (req, res) => {
+//   // fs.readFile("docs/apiDocs.json", (err, data) => {
+//   //   if (err) {
+//   //     res.status(400).json({
+//   //       error: err,
+//   //     });
+//   //     const docs = JSON.parse(data);
+//   //     res.json(docs);
+//   //   }
+//   // });
+//   res.send(docs);
+// });
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "./frontend/build")));
 
