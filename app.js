@@ -3,7 +3,7 @@ const morgan = require("morgan");
 const app = express();
 const postRoutes = require("./routes/postRoutes");
 const authRoutes = require("./routes/authRoutes");
-// const profileRoutes = require("./routes/profileRoutes");
+const profileRoutes = require("./routes/profileRoutes");
 const userRoutes = require("./routes/userRoutes");
 const followRoutes = require("./routes/followRoutes");
 const fs = require("fs");
@@ -24,7 +24,6 @@ app.use(morgan("dev"));
 const PORT = process.env.PORT || 8080;
 const dotenv = require("dotenv").config();
 const mongoose = require("mongoose");
-console.log("niode_env: ", process.env.NODE_ENV);
 
 mongoose.connect(process.env.MONGO_URI);
 mongoose.connection.on("connected", () => {
@@ -37,7 +36,7 @@ mongoose.connection.on("error", (err) => {
 //
 app.use("/post", postRoutes);
 app.use("/auth", authRoutes);
-// app.use("/profile", profileRoutes);
+app.use("/profile", profileRoutes);
 app.use("/user", userRoutes);
 app.use("/folow", followRoutes);
 
