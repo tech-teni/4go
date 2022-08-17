@@ -369,7 +369,8 @@ footer {
     height: 100vh;
     color: white;
     font-size: 30px;
-    margin: 0;
+    margin-top: 10px;
+    font-weight: bold;
   }
   .web-header {
     display: none;
