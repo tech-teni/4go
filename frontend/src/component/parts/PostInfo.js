@@ -16,19 +16,20 @@ const PostInfo = ({
 }) => {
   return (
     <div className="post-info">
-      <div>
-        <img src={img} alt="" />
+      <div className="user-pic">
+        <img alt="" src="/img/profilePic.png" />
       </div>
       <div className="post-words">
         <div>
           <h1>{username}</h1>
         </div>
-        <p>
-          {words}
-
+        <p className="post-corner">
+          <img src={img} alt="" width={170} height={"auto"} />
           <a href="/post" className="harsh-tag">
             {harshTag}
           </a>
+
+          <span>{words}</span>
         </p>
         <div className="likes-comment">
           <span>

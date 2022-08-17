@@ -10,11 +10,13 @@ import RegisterPage from "./component/pages/RegisterPage";
 import SearchPage from "./component/pages/SearchPage";
 import WelcomePage from "./component/pages/WelcomePage";
 import ProfilePage from "./component/pages/ProfilePage";
+import { Toaster } from "react-hot-toast";
 
 // our main component
 function App() {
   return (
     <Router>
+      <Toaster />
       <Routes>
         <Route exact path="/" element={<WelcomePage />}></Route>
 

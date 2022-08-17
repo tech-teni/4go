@@ -6,6 +6,8 @@ const formidable = require("formidable");
 const fs = require("fs");
 const { post } = require("../routes/postRoutes");
 const { findById } = require("../models/postModel");
+// const cloudinary = require("../utils/cloudinary");
+const cloudinary = require("cloudinary");
 
 // get post by _id
 const PostById = (req, res, next, id) => {
@@ -21,63 +23,53 @@ const PostById = (req, res, next, id) => {
 };
 
 //create post
-const createPostController = (req, res, next) => {
-  const errors = validationResult(req);
-  if (errors.notEmpty) {
-    console.log(errors);
+const createPostController = async (req, res, next) => {
+  try {
+    const result = await cloudinary.v2.uploader.upload(req.file.path, {
+      api_key: process.env.API_KEY,
+      api_secret: process.env.API_SECRET,
+      cloud_name: process.env.CLOUD_NAME,
+    });
 
-    return res.status(200).json({ post: errors.array().map((err) => err.msg) });
-  }
-  let form = new formidable({ multiples: true });
+    console.log("image", result);
+    const errors = validationResult(req);
+    if (errors.notEmpty) {
+      console.log(errors);
 
-  form.parse(req, (err, fields, files) => {
-    if (err) {
-      next(err);
-      return res.status(400).json({
-        error: "Image could not upload",
+      return res
+        .status(400)
+        .json({ post: errors.array().map((err) => err.msg) });
+    }
+
+    const { postContent } = req.body;
+    const post = {
+      postedBy: req.auth._id,
+      postContent,
+      image: result.secure_url,
+    };
+    const Post = new postModel(post);
+
+    Post.save()
+      .then((result) => {
+        console.log("post saved");
+        res.status(200).json({ post: result });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ post: err });
       });
-    }
-    let post = new Post(fields);
-    post.postedBy = req.profile;
-    if (files.photo) {
-      post.image.data = fs.readFileSync(files.image.path);
-      post.image.contentType = files.image.type;
-    }
-    post.save((err, result) => {
-      if (err) {
-        res.status(400).json({ err });
-      }
-      res.json(result);
-    });
-    res.json({ fields, files });
-  });
-  const { userName, postContent, comments, likes, imageUrl } = req.body;
-  const post = {
-    userName,
-    postContent,
-    imageUrl,
-    comments,
-    likes,
-  };
-  const Post = new postModel(post);
-
-  Post.save()
-    .then((result) => {
-      console.log("post saved");
-      res.status(200).json({ post: result });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(200).json({ post: err });
-    });
+    return;
+  } catch (error) {
+    console.log("error", error);
+  }
 };
 
 //get all posts
 const getPostController = async (req, res) => {
-  console.log(req.headers);
   const posts = postModel
     .find()
-    .populate("postedBy", "_id name")
+    .populate("postedBy")
+    .sort({ date: 1 })
     // .select("_id userName")
     .then((posts) => {
       res.status(200).json({ posts: posts });

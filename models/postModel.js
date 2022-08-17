@@ -6,19 +6,19 @@ const postSchema = new Schema({
   postedBy: {
     type: ObjectId,
     ref: "authModel",
-    required: true,
+    // required: true,
   },
   postContent: {
     type: String,
-    required: true,
+    // required: true,
     minlength: 4,
     maxlength: 150,
   },
   image: {
-    data: Buffer,
-    contentType: String,
+    type: String,
   },
   likes: [{ type: ObjectId, ref: "authModel" }],
+
   comments: [
     {
       text: String,

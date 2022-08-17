@@ -24,25 +24,6 @@ const NoficationPage = () => {
       </div>
 
       <Notify />
-      <Notify />
-      <Notify />
-      <Notify />
-      <Notify />
-      <Notify />
-      <Notify />
-      <Notify />
-      <Notify />
-      <Notify />
-      <Notify />
-      <Notify />
-      <Notify />
-      <Notify />
-      <Notify />
-      <Notify />
-      <Notify />
-      <Notify />
-      <Notify />
-      <Notify />
       <div className="space"></div>
 
       <Footer path="/" Blue={Blue} />

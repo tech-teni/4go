@@ -87,9 +87,10 @@ const postLoginControllers = async (req, res) => {
         }
       );
     })
+    .select("password")
     .clone()
     .catch(function (err) {
-      console.log(err);
+      console.log("this error: ", err);
     });
 };
 const getLoginControllers = async (req, res) => {
@@ -107,7 +108,8 @@ const authenticateToken = (req, res, next) => {
   jwt.verify(token, process.env.JWT_SECRET, (err, auth) => {
     console.log(err);
 
-    if (err) return res.sendStatus(403);
+    if (err)
+      return res.sendStatus(403).json({ posts: "you are not authorised" });
     console.log("THIS IS THE USER" + auth);
     //  notice the auth have id property so we store it in req as a property
     // example

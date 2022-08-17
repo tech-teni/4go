@@ -9,7 +9,7 @@ const {
 } = require("../controllers/userController");
 const { authenticateToken } = require("../controllers/AuthControllers");
 
-router.get("/users", getAllUser);
+router.get("/", getAllUser);
 // router.get("/user", authenticateToken, getOneUser);
 router.get("/user", authenticateToken, getOneUser);
 router.delete("/user", authenticateToken, deleteUser);

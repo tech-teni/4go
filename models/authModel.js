@@ -33,6 +33,7 @@ const authSchema = new Schema({
     required: true,
     // select: false,
     minlength: 4,
+    select: false,
   },
   gender: {
     type: String,

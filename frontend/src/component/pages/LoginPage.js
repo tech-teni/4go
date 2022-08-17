@@ -58,44 +58,46 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login">
-      <h1>4go</h1>
+    <div className="registration">
+      <div className="login register">
+        <h1>4go</h1>
 
-      <form action="" onSubmit={onSubmit}>
-        <div className={error ? "alert alert-danger" : "none"}>{error}</div>
-        <div className={success ? "alert alert-success" : "none"}>
-          {success}
-        </div>
+        <form action="" onSubmit={onSubmit}>
+          <div className={error ? "alert alert-danger" : "none"}>{error}</div>
+          <div className={success ? "alert alert-success" : "none"}>
+            {success}
+          </div>
 
-        <Input
-          type="text"
-          placeholder="Username or Email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            setSuccess("");
-            setError("");
-          }}
-        />
-        <Input
-          type="text"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-            setSuccess("");
-            setError("");
-          }}
-        />
+          <Input
+            type="text"
+            placeholder="Username or Email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setSuccess("");
+              setError("");
+            }}
+          />
+          <Input
+            type="text"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setSuccess("");
+              setError("");
+            }}
+          />
 
-        <div className="account">
-          <p>Dont have an account ?</p>
-          <h5>
-            <a href="/register">Sign up</a>{" "}
-          </h5>
-        </div>
-        <Input type="Submit" placeholder="Password" value="Log in" />
-      </form>
+          <div className="account">
+            <p>Dont have an account ?</p>
+            <h5>
+              <a href="/register">Sign up</a>{" "}
+            </h5>
+          </div>
+          <Input type="Submit" placeholder="Password" value="Log in" />
+        </form>
+      </div>
     </div>
   );
 };

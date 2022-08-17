@@ -1,11 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineSearch } from "react-icons/ai";
+import PerTrend from "../parts/PerTrend";
+import { useLocation, Link } from "react-router-dom";
 
 import PostInfo from "../parts/PostInfo";
 import Footer from "../parts/Footer";
 import Button from "../parts/Button";
 import { AiFillCloseCircle } from "react-icons/ai";
+import axios from "axios";
+import WebMenu from "../parts/WebMenu";
+
 const Homepage = () => {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [displayRoute, setDisplayRoute] = useState(true);
+  const fetchPost = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get(`${process.env.REACT_APP_API}/post`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      });
+      setLoading(false);
+      if (res.status === 200) {
+        setPosts(res.data.posts.reverse());
+      }
+      console.log("res", res);
+    } catch (error) {
+      setLoading(false);
+      console.log("error: ", error);
+      setDisplayRoute(false);
+    }
+  };
+  useEffect(() => {
+    fetchPost();
+  }, []);
   const Blue = {
     color: "#4c88e1",
   };
@@ -33,123 +64,104 @@ const Homepage = () => {
       navigate("/login");
     }, 2000);
   };
+  console.log(displayRoute);
+
+  console.log(posts);
+  if (displayRoute === false) {
+    return <p>YOU ARE NOT AUTHORIZED, KINDLY LOGIN </p>;
+  }
   return (
-    <div className="main-home">
-      {menuBar && (
-        <div className="menu-bar">
-          <div className="orange-button">
-            <button onClick={clearLocalStorage}>Sign Out</button>
+    displayRoute && (
+      <div className="main-home">
+        {menuBar && (
+          <div className="menu-bar">
+            <div className="orange-button">
+              <button onClick={clearLocalStorage}>Sign Out</button>
+            </div>
+            <div>
+              <AiFillCloseCircle onClick={showMenuBar} />
+            </div>
           </div>
+        )}
+        <div className="web-header">
+          <h1>4go</h1>
+          <form>
+            <input type="search" placeholder="Search" />
+          </form>
+          <div className="searchfor-homepage">
+            <AiOutlineSearch />
+          </div>
+        </div>
+        <WebMenu />
+
+        <header className="mobile-header">
+          <div onClick={showMenuBar}>
+            <img src="./img/profilePic.png" alt="" />
+          </div>
+          <h1>4go</h1>
           <div>
-            <AiFillCloseCircle onClick={showMenuBar} />
+            <img src="img/message.png" alt="" />
+          </div>
+        </header>
+
+        <div className="major-home">
+          <section className="post-screen">
+            {loading ? (
+              <h1>loading</h1>
+            ) : (
+              posts.map((post) => (
+                <PostInfo
+                  img={post.image}
+                  username={post.postedBy.userName}
+                  words={post.postContent}
+                  time={new Date(post.date).getHours() + "h"}
+                  // moreInfo=""
+                  likes={post.likes.length}
+                  comment={post.comments.length}
+                  retweet="50"
+                  harshTag="#techTalk"
+                />
+              ))
+            )}
+          </section>
+          <div className="trends-for-you">
+            <div className="trend-container">
+              <h1>Trends for you </h1>
+
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+              <PerTrend />
+            </div>
           </div>
         </div>
-      )}
 
-      <header>
-        <div onClick={showMenuBar}>
-          <img src="./img/profilePic.png" alt="" />
-        </div>
-        <h1>4go</h1>
-        <div>
-          <img src="img/message.png" alt="" />
-        </div>
-      </header>
-      <section className="post-screen">
-        <PostInfo
-          img="/img/dusan.png"
-          username="Java Babe"
-          words="Just curious, are u using => functions exclusively or still sticking
-          to the traditional function syntax?"
-          time="2h"
-          // moreInfo=""
-          likes="100"
-          comment="100"
-          retweet="50"
-          harshTag="#techTalk"
-        />
-        <PostInfo
-          img="/img/happy.png"
-          username="Happy Soul"
-          words="Hello world, Can u hear me?, I said can u hear me"
-          time="1h"
-          // moreInfo=""
-          likes="150"
-          comment="20"
-          retweet="20"
-          harshTag=""
-        />
-        <PostInfo
-          img="/img/happy.png"
-          username="Happy Soul"
-          words="Happy new month fams, say Hi to your latest celebrity on the app?"
-          time="3h"
-          // moreInfo=""
-          likes="70"
-          comment="24"
-          retweet="150"
-          harshTag="#incomingBlueTick #themGoHear"
-        />
-        <PostInfo
-          img="/img/ayoogunseinde.png"
-          username="Ayo Olasehinde"
-          words="Hi fam, welcome me to 4go, I hope u are nice over here"
-          time="5h"
-          // moreInfo=""
-          likes="10"
-          comment="23"
-          retweet="15"
-          harshTag="#welcomeMeTo4go #4goStarter"
-        />
-        <PostInfo
-          img="/img/ayoogunseinde.png"
-          username="Ayo Olasehinde"
-          words="Hi fam, welcome me to 4go, I hope u are nice over here"
-          time="5h"
-          // moreInfo=""
-          likes="10"
-          comment="23"
-          retweet="15"
-          harshTag="#welcomeMeTo4go #4goStarter"
-        />
-        <PostInfo
-          img="/img/ayoogunseinde.png"
-          username="Ayo Olasehinde"
-          words="Hi fam, welcome me to 4go, I hope u are nice over here"
-          time="5h"
-          // moreInfo=""
-          likes="10"
-          comment="23"
-          retweet="15"
-          harshTag="#welcomeMeTo4go #4goStarter"
-        />
-        <PostInfo
-          img="/img/ayoogunseinde.png"
-          username="Ayo Olasehinde"
-          words="Hi fam, welcome me to 4go, I hope u are nice over here"
-          time="5h"
-          // moreInfo=""
-          likes="10"
-          comment="23"
-          retweet="15"
-          harshTag="#welcomeMeTo4go #4goStarter"
-        />
-        <PostInfo
-          img="/img/ayoogunseinde.png"
-          username="Ayo Olasehinde"
-          words="Hi fam, welcome me to 4go, I hope u are nice over here"
-          time="5h"
-          // moreInfo=""
-          likes="10"
-          comment="23"
-          retweet="15"
-          harshTag="#welcomeMeTo4go #4goStarter"
-        />
-      </section>
-      <div className="space"></div>
+        {/* <div className="space"></div> */}
 
-      <Footer path="/" Blue={Blue} />
-    </div>
+        <Footer path="/" Blue={Blue} />
+      </div>
+    )
   );
 };
 

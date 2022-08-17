@@ -14,9 +14,18 @@ const {
   isPoster,
 } = require("../controllers/postControllers");
 const { authenticateToken } = require("../controllers/AuthControllers");
+const multer = require("multer");
 const router = express.Router();
+const upload = multer({
+  storage: multer.diskStorage({}),
+});
 //authenticate token
-router.post("/", authenticateToken, createPostController);
+router.post(
+  "/",
+  upload.single("image"),
+  authenticateToken,
+  createPostController
+);
 router.get("/", authenticateToken, getPostController);
 router.get("/by/:userId", authenticateToken, postByUser);
 router.delete("/post/:postId", authenticateToken, isPoster, deletePost);
